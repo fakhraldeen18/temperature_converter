@@ -1,8 +1,19 @@
 ﻿using System.Xml.XPath;
 
-var temperature = new Temperature();
 
-Console.WriteLine(temperature.TempConvert("F",32)); 
+var temperature = new Temperature();
+Console.WriteLine($" Enter a temperature and its unit (C or F):");
+string? input = Console.ReadLine();
+if(input is null){
+    return;
+}
+
+string[] subInput = input.Split(' ');
+
+double degree = Convert.ToDouble(subInput[0]);
+char unit = Convert.ToChar(subInput[1]);
+
+Console.WriteLine(temperature.TempConvert(unit.ToString(),Convert.ToInt16(degree))); 
 
 class Temperature (){
 
